@@ -101,7 +101,7 @@ window.onload = function () {
     const counts = {};
     const responses = {};
 
-    const questions = document.querySelectorAll(".question");
+    const questionElems = document.querySelectorAll(".question");
 
     questions.forEach((q) => {
       const category = q.dataset.category;
