@@ -1,5 +1,4 @@
 window.onload = function () {
-  // === 1. Full Questions List ===
   let questions = [
     // Analytical
     { text: "I often notice patterns in information that others may miss.", id: 'q1', category: "Analytical", reverse: false },
@@ -103,14 +102,12 @@ window.onload = function () {
 
   const questionElems = document.querySelectorAll(".question");
 
-  // Add this check to ensure questions are found
   if (questionElems.length === 0) {
     alert("No questions found. Please ensure the quiz is loaded correctly.");
-    return; // Stop execution if no questions are found
+    return; 
   }
 
   questionElems.forEach((q) => {
-    // Add this check to ensure q is a valid element before accessing its dataset
     if (q && q.dataset) {
       const category = q.dataset.category;
       const reverse = q.dataset.reverse === "true";
@@ -177,11 +174,9 @@ window.onload = function () {
 
     document.getElementById("submit-button").style.backgroundColor = "#345491";
 
-    // === JSONP Submission ===
     const callbackName = "jsonpCallback_" + Math.floor(Math.random() * 100000);
     window[callbackName] = function (data) {
       console.log("✅ Google Script response:", data);
-      alert("Form submitted successfully!");
       delete window[callbackName];
       document.body.removeChild(script);
     };
