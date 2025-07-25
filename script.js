@@ -86,7 +86,7 @@ document.getElementById("quiz-form").addEventListener("submit", function (e) {
     document.body.removeChild(script);
   };
 
-  const url = "https://script.google.com/macros/s/PASTE_YOUR_DEPLOYED_ID/exec"
+  const url = "https://script.google.com/macros/s/AKfycbwb2CupGKeV58ERGrT3XrH_OoXRM1XmVF_F-8IDFkQS37CpwuDulkmZk-Z316GFFUtH/exec"
     + "?callback=" + callbackName
     + "&data=" + encodeURIComponent(JSON.stringify(responses));
 
