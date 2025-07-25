@@ -103,23 +103,34 @@ window.onload = function () {
 
   const questionElems = document.querySelectorAll(".question");
 
+  // Add this check to ensure questions are found
+  if (questionElems.length === 0) {
+    alert("No questions found. Please ensure the quiz is loaded correctly.");
+    return; // Stop execution if no questions are found
+  }
+
   questionElems.forEach((q) => {
-    const category = q.dataset.category;
-    const reverse = q.dataset.reverse === "true";
-    const questionId = q.querySelector('input[type="radio"]').name;
-    const selected = q.querySelector('input[type="radio"]:checked');
+    // Add this check to ensure q is a valid element before accessing its dataset
+    if (q && q.dataset) {
+      const category = q.dataset.category;
+      const reverse = q.dataset.reverse === "true";
+      const questionId = q.querySelector('input[type="radio"]').name;
+      const selected = q.querySelector('input[type="radio"]:checked');
 
-    if (!scores[category]) {
-      scores[category] = 0;
-      counts[category] = 0;
-    }
+      if (!scores[category]) {
+        scores[category] = 0;
+        counts[category] = 0;
+      }
 
-    if (selected) {
-      let value = parseInt(selected.value);
-      responses[questionId] = value;
-      if (reverse) value = 6 - value;
-      scores[category] += value;
-      counts[category]++;
+      if (selected) {
+        let value = parseInt(selected.value);
+        responses[questionId] = value;
+        if (reverse) value = 6 - value;
+        scores[category] += value;
+        counts[category]++;
+      }
+    } else {
+      console.warn("Found an element without dataset or not a valid question element:", q);
     }
   });
 
@@ -161,7 +172,7 @@ window.onload = function () {
       document.getElementById("results").style.display = "block";
 
     } else {
-      alert("Not enough valid category scores to determine result.");
+      alert("Not enough valid category scores to determine result. Please make sure you've answered enough questions.");
     }
 
     document.getElementById("submit-button").style.backgroundColor = "#345491";
