@@ -95,33 +95,33 @@ window.onload = function () {
   }
 
   document.getElementById("quiz-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const scores = {};
-    const counts = {};
-    const responses = {};
+  const scores = {};
+  const counts = {};
+  const responses = {};
 
-    const questionElems = document.querySelectorAll(".question");
+  const questionElems = document.querySelectorAll(".question");
 
-    questions.forEach((q) => {
-      const category = q.dataset.category;
-      const reverse = q.dataset.reverse === "true";
-      const questionId = q.querySelector('input[type="radio"]').name;
-      const selected = q.querySelector('input[type="radio"]:checked');
+  questionElems.forEach((q) => {
+    const category = q.dataset.category;
+    const reverse = q.dataset.reverse === "true";
+    const questionId = q.querySelector('input[type="radio"]').name;
+    const selected = q.querySelector('input[type="radio"]:checked');
 
-      if (!scores[category]) {
-        scores[category] = 0;
-        counts[category] = 0;
-      }
+    if (!scores[category]) {
+      scores[category] = 0;
+      counts[category] = 0;
+    }
 
-      if (selected) {
-        let value = parseInt(selected.value);
-        responses[questionId] = value;
-        if (reverse) value = 6 - value;
-        scores[category] += value;
-        counts[category]++;
-      }
-    });
+    if (selected) {
+      let value = parseInt(selected.value);
+      responses[questionId] = value;
+      if (reverse) value = 6 - value;
+      scores[category] += value;
+      counts[category]++;
+    }
+  });
 
     const scaled = {};
     for (let cat in scores) {
