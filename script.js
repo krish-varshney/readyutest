@@ -188,7 +188,7 @@ window.onload = function () {
 
     const encodedData = encodeURIComponent(JSON.stringify(responses));
     const script = document.createElement("script");
-    script.src = `https://script.google.com/macros/s/AKfycbwKzkUClO5lfKM8x8ma-3wA_mKhSwVnq8du0y8V_mOIfsqJlqdTkteVQgwPyjVZ4XQKjw/exec?callback=${callbackName}&data=${encodedData}`;
+    script.src = `https://script.google.com/macros/s/AKfycbynVGPtzHWGh7eD4kYMxsey_AymR8K4nr55hMfoNZsTTxv1asLQGchpM4Zm7bl2MO2BwA/exec?callback=${callbackName}&data=${encodedData}`;
     document.body.appendChild(script);
   });
 };
